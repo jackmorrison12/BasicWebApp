@@ -30,4 +30,9 @@ public class QueryProcessorTest {
         assertThat(queryProcessor.process("which of the following numbers is the largest: 2064, 203050"), containsString("203050"));
         assertThat(queryProcessor.process("which of the following numbers is the largest: 2064, 203050, 12"), containsString("203050"));
     }
+
+    @Test
+    public void canAddNumbers() throws Exception {
+        assertThat(queryProcessor.process("what is 2 plus 3"), containsString("5"));
+    }
 }
