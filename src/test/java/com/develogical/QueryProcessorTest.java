@@ -44,10 +44,16 @@ public class QueryProcessorTest {
     }
 
     @Test
+    public void primes() throws Exception {
+        assertThat(queryProcessor.process(":primes: 1, 2, 3, 4, 5"), containsString("2, 3"));
+    }
+  
+    @Test
     public void canFindSquareAndCube() throws Exception {
         assertThat(queryProcessor.process("which of the following numbers is both a square and a cube: 2, 64"), containsString("64"));
     }
       
+    @Test
     public void canMinusNumbers() throws Exception {
         assertThat(queryProcessor.process("12a3: what is 2 minus 3"), containsString("-1"));
     }
