@@ -46,6 +46,8 @@ public class QueryProcessorTest {
     @Test
     public void canFindSquareAndCube() throws Exception {
         assertThat(queryProcessor.process("which of the following numbers is both a square and a cube: 2, 64"), containsString("64"));
+    }
+
     @Test
     public void trivia() throws Exception {
         assertThat(queryProcessor.process("Eiffel Tower"), containsString("France"));
