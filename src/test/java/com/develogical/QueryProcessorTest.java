@@ -26,16 +26,6 @@ public class QueryProcessorTest {
     }
 
     @Test
-    public void knowsWhoTheBestSingerIs() throws Exception {
-        assertThat(queryProcessor.process("Best Singer"), containsString("Taylor Alison Swift"));
-    }
-
-    @Test
-    public void knowsTeamName() throws Exception {
-        assertThat(queryProcessor.process("your name"), containsString("SEI Baes"));
-    }
-
-    @Test
     public void knowsLargestOfTwoNumbers() throws Exception {
         assertThat(queryProcessor.process("which of the following numbers is the largest: 2064, 203050"), containsString("203050"));
         assertThat(queryProcessor.process("which of the following numbers is the largest: 2064, 203050, 12"), containsString("203050"));
