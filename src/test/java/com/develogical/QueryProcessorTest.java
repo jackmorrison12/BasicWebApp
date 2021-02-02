@@ -35,11 +35,11 @@ public class QueryProcessorTest {
 
     @Test
     public void canAddNumbers() throws Exception {
-        assertThat(queryProcessor.process("what is 2 plus 3"), containsString("5"));
+        assertThat(queryProcessor.process("12a3: what is 2 plus 3"), containsString("5"));
     }
 
     @Test
     public void canMultiplyNumbers() throws Exception {
-        assertThat(queryProcessor.process("what is 2 multiplied by 3"), containsString("6"));
+        assertThat(queryProcessor.process("12a3: what is 2 multiplied by 3"), containsString("6"));
     }
 }

@@ -25,20 +25,22 @@ public class QueryProcessor {
             return String.valueOf(largest);
         } else if (query.toLowerCase().contains("best singer")) {
             return "Taylor Alison Swift (born December 13, 1989) is an American singer-songwriter.";
-        } else if (query.toLowerCase().matches("what is [0-9]+ plus [0-9]+?")) {
+        } else if (query.toLowerCase().matches(".*what is [0-9]+ plus [0-9]+?")) {
+            String[] parts = query.split("[:,]");
             Integer sum = 0;
             Pattern p = Pattern.compile("\\d+");
-            Matcher m = p.matcher(query);
+            Matcher m = p.matcher(parts[1]);
             while (m.find()) {
                 System.out.println(m.group());
                 sum += Integer.parseInt(m.group());
             }
             return String.valueOf(sum);
 
-        } else if (query.toLowerCase().matches("what is [0-9]+ multiplied by [0-9]+?")) {
+        } else if (query.toLowerCase().matches(".*what is [0-9]+ multiplied by [0-9]+?")) {
+            String[] parts = query.split("[:,]");
             Integer sum = 1;
             Pattern p = Pattern.compile("\\d+");
-            Matcher m = p.matcher(query);
+            Matcher m = p.matcher(parts[1]);
             while (m.find()) {
                 System.out.println(m.group());
                 sum *= Integer.parseInt(m.group());
