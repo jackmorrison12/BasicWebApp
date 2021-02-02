@@ -58,6 +58,20 @@ public class QueryProcessor {
                 sum *= Integer.parseInt(m.group());
             }
             return String.valueOf(sum);
+        } else if (query.toLowerCase().contains("which of the following numbers is both a square and a cube:")) {
+            String[] parts = query.split("[:,]");
+
+            int sq_and_cube = 0;
+            for (int i = 2; i < parts.length; i++) {
+                String y = parts[i].replace(" ", "");
+                int x = Integer.parseInt(y);
+                double sq = Math.sqrt(x);
+                double cb = Math.cbrt(x);
+                if ((sq - Math.floor(sq) == 0) && (cb - Math.floor(cb) == 0)) {
+                    sq_and_cube = x;
+                }
+            }
+            return String.valueOf(sq_and_cube);
         } else if (query.toLowerCase().contains("eiffel tower")) {
             return "France";
         } else if (query.toLowerCase().contains("theresa may")) {

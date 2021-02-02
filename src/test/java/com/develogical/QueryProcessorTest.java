@@ -44,6 +44,10 @@ public class QueryProcessorTest {
     }
 
     @Test
+    public void canFindSquareAndCube() throws Exception {
+        assertThat(queryProcessor.process("which of the following numbers is both a square and a cube: 2, 64"), containsString("64"));
+    }
+      
     public void canMinusNumbers() throws Exception {
         assertThat(queryProcessor.process("12a3: what is 2 minus 3"), containsString("-1"));
     }
