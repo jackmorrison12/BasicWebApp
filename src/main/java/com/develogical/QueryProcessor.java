@@ -14,7 +14,7 @@ public class QueryProcessor {
             String[] parts = query.split("[:,]");
 
             int largest = 0;
-            for (int i = 1; i < parts.length; i++) {
+            for (int i = 2; i < parts.length; i++) {
                 String y = parts[i].replace(" ", "");
                 int x = Integer.parseInt(y);
                 if (x > largest) {
