@@ -27,12 +27,19 @@ public class QueryProcessorTest {
 
     @Test
     public void knowsLargestOfTwoNumbers() throws Exception {
-        assertThat(queryProcessor.process("which of the following numbers is the largest: 2064, 203050"), containsString("203050"));
-        assertThat(queryProcessor.process("which of the following numbers is the largest: 2064, 203050, 12"), containsString("203050"));
+        assertThat(queryProcessor.process("which of the following numbers is the largest: 2064, 203050"),
+                containsString("203050"));
+        assertThat(queryProcessor.process("which of the following numbers is the largest: 2064, 203050, 12"),
+                containsString("203050"));
     }
 
     @Test
     public void canAddNumbers() throws Exception {
         assertThat(queryProcessor.process("what is 2 plus 3"), containsString("5"));
+    }
+
+    @Test
+    public void canMultiplyNumbers() throws Exception {
+        assertThat(queryProcessor.process("what is 2 multiplied by 3"), containsString("6"));
     }
 }

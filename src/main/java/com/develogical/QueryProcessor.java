@@ -1,4 +1,5 @@
 package com.develogical;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,7 +21,7 @@ public class QueryProcessor {
                     largest = x;
                 }
             }
-            
+
             return String.valueOf(largest);
         } else if (query.toLowerCase().contains("best singer")) {
             return "Taylor Alison Swift (born December 13, 1989) is an American singer-songwriter.";
@@ -28,12 +29,21 @@ public class QueryProcessor {
             Integer sum = 0;
             Pattern p = Pattern.compile("\\d+");
             Matcher m = p.matcher(query);
-            while(m.find()) {
+            while (m.find()) {
                 System.out.println(m.group());
                 sum += Integer.parseInt(m.group());
             }
             return String.valueOf(sum);
 
+        } else if (query.toLowerCase().matches("what is [0-9]+ multiplied by [0-9]+?")) {
+            Integer sum = 1;
+            Pattern p = Pattern.compile("\\d+");
+            Matcher m = p.matcher(query);
+            while (m.find()) {
+                System.out.println(m.group());
+                sum *= Integer.parseInt(m.group());
+            }
+            return String.valueOf(sum);
         }
         return "";
     }
