@@ -46,8 +46,12 @@ public class QueryProcessor {
                 sum *= Integer.parseInt(m.group());
             }
             return String.valueOf(sum);
-        } else if (query.toLowerCase().contains("Eiffel Tower")) {
+        } else if (query.toLowerCase().contains("eiffel tower")) {
             return "France";
+        } else if (query.toLowerCase().contains("theresa may")) {
+            return "2016";
+        } else if (query.toLowerCase().contains("banana")) {
+            return "yellow";
         }
         return "";
     }
