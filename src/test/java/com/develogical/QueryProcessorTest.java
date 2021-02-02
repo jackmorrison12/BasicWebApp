@@ -35,7 +35,7 @@ public class QueryProcessorTest {
 
     @Test
     public void canAddNumbers() throws Exception {
-        assertThat(queryProcessor.process("12a3: what is 2 plus 3"), containsString("5"));
+        assertThat(queryProcessor.process("12a3: what is 2 plus 3 plus 8 plus 9"), containsString("22"));
     }
 
     @Test
@@ -43,15 +43,21 @@ public class QueryProcessorTest {
         assertThat(queryProcessor.process("12a3: what is 2 multiplied by 3"), containsString("6"));
     }
 
-    //@Test
-    //public void trivia() throws Exception {
-    //    assertThat(queryProcessor.process("Eiffel Tower"), containsString("France"));
-    //    assertThat(queryProcessor.process("Theresa May"), containsString("2016"));
-    //    assertThat(queryProcessor.process("banana"), containsString("yellow"));
-    //}
-
     @Test
     public void primes() throws Exception {
         assertThat(queryProcessor.process(":primes: 1, 2, 3, 4, 5"), containsString("2, 3"));
+    }
+  
+    @Test
+    public void canMinusNumbers() throws Exception {
+        assertThat(queryProcessor.process("12a3: what is 2 minus 3"), containsString("-1"));
+    }
+
+    @Test
+    public void trivia() throws Exception {
+        assertThat(queryProcessor.process("Eiffel Tower"), containsString("France"));
+        assertThat(queryProcessor.process("Theresa May"), containsString("2016"));
+        assertThat(queryProcessor.process("banana"), containsString("yellow"));
+        assertThat(queryProcessor.process("Dr No"), containsString("Sean Connery"));
     }
 }

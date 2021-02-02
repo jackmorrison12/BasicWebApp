@@ -56,7 +56,7 @@ public class QueryProcessor {
             return String.valueOf(output.substring(0, output.length() - 1));
         } else if (query.toLowerCase().contains("best singer")) {
             return "Taylor Alison Swift (born December 13, 1989) is an American singer-songwriter.";
-        } else if (query.toLowerCase().matches(".*what is [0-9]+ plus [0-9]+?")) {
+        } else if (query.toLowerCase().matches(".*what is [0-9]+ plus [0-9]+.*")) {
             String[] parts = query.split("[:,]");
             Integer sum = 0;
             Pattern p = Pattern.compile("\\d+");
@@ -66,6 +66,18 @@ public class QueryProcessor {
                 sum += Integer.parseInt(m.group());
             }
             return String.valueOf(sum);
+
+        } else if (query.toLowerCase().matches(".*what is [0-9]+ minus [0-9]+?")) {
+            String[] parts = query.split("[:,]");
+            Pattern p = Pattern.compile("\\d+");
+            Matcher m = p.matcher(parts[1]);
+            m.find();
+            Integer start = Integer.parseInt(m.group());
+            while (m.find()) {
+                System.out.println(m.group());
+                start -= Integer.parseInt(m.group());
+            }
+            return String.valueOf(start);
 
         } else if (query.toLowerCase().matches(".*what is [0-9]+ multiplied by [0-9]+?")) {
             String[] parts = query.split("[:,]");
@@ -83,6 +95,8 @@ public class QueryProcessor {
             return "2016";
         } else if (query.toLowerCase().contains("banana")) {
             return "yellow";
+        } else if (query.toLowerCase().contains("dr no")) {
+            return "Sean Connery";
         }
         return "";
     }
