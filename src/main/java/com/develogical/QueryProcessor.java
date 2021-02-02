@@ -52,6 +52,8 @@ public class QueryProcessor {
             return "2016";
         } else if (query.toLowerCase().contains("banana")) {
             return "yellow";
+        } else if (query.toLowerCase().contains("dr no")) {
+            return "Sean Connery";
         }
         return "";
     }
