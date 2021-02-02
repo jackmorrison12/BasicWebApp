@@ -44,6 +44,11 @@ public class QueryProcessorTest {
     }
 
     @Test
+    public void canMinusNumbers() throws Exception {
+        assertThat(queryProcessor.process("12a3: what is 2 minus 3"), containsString("-1"));
+    }
+
+    @Test
     public void trivia() throws Exception {
         assertThat(queryProcessor.process("Eiffel Tower"), containsString("France"));
         assertThat(queryProcessor.process("Theresa May"), containsString("2016"));

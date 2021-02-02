@@ -36,6 +36,18 @@ public class QueryProcessor {
             }
             return String.valueOf(sum);
 
+        } else if (query.toLowerCase().matches(".*what is [0-9]+ minus [0-9]+?")) {
+            String[] parts = query.split("[:,]");
+            Pattern p = Pattern.compile("\\d+");
+            Matcher m = p.matcher(parts[1]);
+            m.find();
+            Integer start = Integer.parseInt(m.group());
+            while (m.find()) {
+                System.out.println(m.group());
+                start -= Integer.parseInt(m.group());
+            }
+            return String.valueOf(start);
+
         } else if (query.toLowerCase().matches(".*what is [0-9]+ multiplied by [0-9]+?")) {
             String[] parts = query.split("[:,]");
             Integer sum = 1;
