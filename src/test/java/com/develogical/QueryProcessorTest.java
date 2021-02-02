@@ -42,4 +42,8 @@ public class QueryProcessorTest {
     public void canMultiplyNumbers() throws Exception {
         assertThat(queryProcessor.process("12a3: what is 2 multiplied by 3"), containsString("6"));
     }
+
+    public void knowsWhereLandmarksAre() throws Exception {
+        assertThat(queryProcessor.process("Eiffel Tower"), containsString("France"));
+    }
 }
