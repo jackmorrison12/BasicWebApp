@@ -1,5 +1,6 @@
 package com.develogical;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,6 +24,36 @@ public class QueryProcessor {
             }
 
             return String.valueOf(largest);
+        } else if (query.toLowerCase().contains("prime")) {
+            String[] parts = query.split("[:,]");
+            String output = "";
+
+            for (int i = 2; i < parts.length; i++) {
+                String y = parts[i].replace(" ", "");
+                int x = Integer.parseInt(y);
+
+                boolean flag = false;
+                int f = 2;
+                while (f <= x / 2) {
+                    // condition for nonprime number
+                    if (x % f == 0) {
+                        flag = true;
+                        break;
+                    }
+
+                    ++f;
+                }
+
+                if (!flag) {
+                    output = output + ", " + y;
+                }
+            }
+
+            if (output.equals("")) {
+                return output;
+            }
+
+            return String.valueOf(output.substring(0, output.length() - 1));
         } else if (query.toLowerCase().contains("best singer")) {
             return "Taylor Alison Swift (born December 13, 1989) is an American singer-songwriter.";
         } else if (query.toLowerCase().matches(".*what is [0-9]+ plus [0-9]+?")) {
