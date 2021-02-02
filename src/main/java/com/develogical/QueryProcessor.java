@@ -60,7 +60,15 @@ public class QueryProcessor {
                 }
             }
             return String.valueOf(sq_and_cube);
-    }
+        } else if (query.toLowerCase().contains("eiffel tower")) {
+            return "France";
+        } else if (query.toLowerCase().contains("theresa may")) {
+            return "2016";
+        } else if (query.toLowerCase().contains("banana")) {
+            return "yellow";
+        } else if (query.toLowerCase().contains("dr no")) {
+            return "Sean Connery";
+        }
         return "";
     }
 }
